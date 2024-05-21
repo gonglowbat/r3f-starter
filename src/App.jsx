@@ -1,25 +1,23 @@
-import { OrbitControls } from "@react-three/drei"
-import { useRef } from "react"
-import { Perf } from 'r3f-perf'
-import { useControls } from 'leva'
+import { Canvas } from '@react-three/fiber'
+import { Leva } from 'leva'
+import Scene from './Scene'
+
 
 export default function App() {
-    const box = useRef()
+    return (
+        <>
+            <Leva collapsed={false} />
 
-    const boxControls = useControls({
-        scale: 1,
-    })
-
-    return <>
-
-        <Perf position="top-left" />
-
-        <OrbitControls makeDefault />
-
-        <mesh ref={box} scale={boxControls.scale}>
-            <boxGeometry />
-            <meshNormalMaterial />
-        </mesh>
-
-    </>
+            <Canvas
+                camera={{
+                    fov: 75,
+                    near: 0.1,
+                    far: 100,
+                    position: [-2, 2, 2],
+                }}
+            >
+                <Scene />
+            </Canvas>
+        </>
+    )
 }
