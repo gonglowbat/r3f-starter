@@ -3,13 +3,10 @@ import { useRef } from 'react'
 import { Perf } from 'r3f-perf'
 import { useControls } from 'leva'
 
-
-export default function Scene() {
+const Scene = () => {
     const box = useRef()
 
-    const boxControls = useControls({
-        scale: 1,
-    })
+    const boxControls = useControls({ scale: 1 })
 
     return (
         <>
@@ -24,3 +21,5 @@ export default function Scene() {
         </>
     )
 }
+
+export default Scene

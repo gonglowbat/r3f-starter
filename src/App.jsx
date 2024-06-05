@@ -2,8 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Leva } from 'leva'
 import Scene from './Scene'
 
-
-export default function App() {
+const App = () => {
     return (
         <>
             <Leva collapsed={false} />
@@ -21,3 +20,5 @@ export default function App() {
         </>
     )
 }
+
+export default App

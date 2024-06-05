@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react'
-import { transformWithEsbuild } from 'vite'
 
 export default {
     root: 'src/',
@@ -7,18 +6,6 @@ export default {
     base: './',
     plugins: [
         react(),
-        {
-            name: 'load+transform-js-files-as-jsx',
-            async transform(code, id) {
-                if (!id.match(/src\/.*\.js$/))
-                    return null
-
-                return transformWithEsbuild(code, id, {
-                    loader: 'jsx',
-                    jsx: 'automatic',
-                })
-            },
-        },
     ],
     server: {
         host: true,
