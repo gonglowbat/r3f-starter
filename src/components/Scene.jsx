@@ -1,12 +1,18 @@
-import { OrbitControls } from '@react-three/drei'
 import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { useControls } from 'leva'
 
 const Scene = () => {
-    const box = useRef()
+    const boxRef = useRef()
 
     const boxControls = useControls({ scale: 1 })
+
+    useFrame((state, delta) => {
+        boxRef.current.rotation.x += delta
+        boxRef.current.rotation.z += delta
+    })
 
     return (
         <>
@@ -14,7 +20,7 @@ const Scene = () => {
 
             <OrbitControls makeDefault />
 
-            <mesh ref={box} scale={boxControls.scale}>
+            <mesh ref={boxRef} scale={boxControls.scale}>
                 <boxGeometry />
                 <meshNormalMaterial />
             </mesh>
